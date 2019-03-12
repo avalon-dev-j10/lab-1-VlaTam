@@ -1,10 +1,11 @@
 package ru.avalon.java.dev.j10.labs;
 
+import ru.avalon.java.dev.j10.labs.commons.Address;
 import ru.avalon.java.dev.j10.labs.models.Person;
 
 public class Main {
 
-    Main() {
+    public static void main(String[] args) {
 
         /*
          * FIXME(Студент): Измените определение метода так, чтобы он стал точкой входа в приложение.
@@ -24,6 +25,8 @@ public class Main {
          *    чтобы она адресовала объект типа 'Person'
          *    описывающий человека по имени 'John Edvard Smith'.
          */
+        ivanov = new Person("Иванов", "Иван", "Иванович");
+        smith = new Person("John", "Edvard", "Smith", "");
 
         /*
          * TODO(Студент): Создайте несколько строковых переменных:
@@ -44,6 +47,15 @@ public class Main {
          *    человека, описанного объектом, адресованным
          *    переменной 'smith'.
          */
+        String ivanovFullName = ivanov.getFullName();
+        String smithFullName = smith.getFullName();
+
+        ivanov.setAddress(new Address("Saint-Petersburg", "Kazanskaya", 15, 3));
+        String ivanovAddress = ivanov.getAddress();
+
+        smith.setAddress(new Address("London", "Baker street", 3, 1));
+        String smithAddress = smith.getAddress();
+        
 
         /*
          * TODO(Студент): Выведите в консоль значения созданных строковых переменных:
@@ -51,5 +63,6 @@ public class Main {
          * Значение каждой переменной должно быть выведено на
          * отдельной строке.
          */
+        System.out.println(ivanovFullName + "\n" + smithFullName + "\n" + ivanovAddress + "\n" + smithAddress);
     }
 }
