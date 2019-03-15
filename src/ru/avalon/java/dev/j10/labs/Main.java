@@ -64,5 +64,6 @@ public class Main {
          * отдельной строке.
          */
         System.out.println(ivanovFullName + "\n" + smithFullName + "\n" + ivanovAddress + "\n" + smithAddress);
+
     }
 }
