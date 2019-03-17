@@ -17,10 +17,12 @@ package ru.avalon.java.dev.j10.labs.commons;
 
 public class Address{
     
-    private String city;
-    private String street;
+    private String city = "not defined";
+    private String street = "not defined";
     private int numberOfHouse;
     private int numberOfApartment;
+
+    public Address(){}
     
     public Address(String city, String street, int numberOfHouse, int numberOfApartment){
         this.city = city;

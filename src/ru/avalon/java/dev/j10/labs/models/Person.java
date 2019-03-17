@@ -14,28 +14,15 @@ package ru.avalon.java.dev.j10.labs.models;
 import ru.avalon.java.dev.j10.labs.commons.Address;
 
 public class Person {
-    
-    private String lastName;
+
     private String firstName;
-    private String secondName;
-    private String middleName;
-   
     private Passport passport;
     private Address address;
-    
-    public Person (String lastName, String firstName){
-        this.lastName = lastName;
+
+    public Person(String firstName){
         this.firstName = firstName;
-    }
-    
-    public Person (String lastName, String firstName, String middleName){
-        this(lastName, firstName);
-        this.middleName = middleName;
-    }
-    
-    public Person (String firstName, String secondName, String lastName, String middleName){
-        this(lastName, firstName);
-        this.secondName = secondName;
+        passport = new Passport(firstName);
+        address = new Address();
     }
    
     
@@ -77,15 +64,18 @@ public class Person {
          * TODO(Студент): Закончить определение метода 'getFullName()' класса 'Person'
          */
         String fullName;
-                
+        String middleName = passport.getMiddleName();
+        String lastName = passport.getLastName();
+        String secondName = passport.getSecondName();
+
         if ((middleName == null) && (secondName == null))
             fullName = firstName + " " + lastName;
-        
-        if (secondName == null){
-            fullName = firstName + " " + middleName + " " + lastName;
-        }
         else
-            fullName = firstName + " " + ((Character)secondName.charAt(0)).toString() + ". " + lastName;
+            if (secondName == null){
+                fullName = firstName + " " + middleName + " " + lastName;
+            }
+            else
+                fullName = firstName + " " + ((Character)secondName.charAt(0)).toString() + ". " + lastName;
         
         return fullName;
     }
@@ -105,31 +95,19 @@ public class Person {
         return address.toString();
     }
 
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public Passport getPassport() {
+        return passport;
+    }
+
     public void setPassport(Passport passport) {
         this.passport = passport;
     }
 
     public void setAddress(Address address) {
         this.address = address;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public String getSecondName() {
-        return secondName;
-    }
-
-    public String getMiddleName() {
-        return middleName;
-    }
-
-    public Passport getPassport() {
-        return passport;
     }
 }
