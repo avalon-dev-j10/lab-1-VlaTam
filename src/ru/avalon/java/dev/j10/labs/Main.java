@@ -1,6 +1,7 @@
 package ru.avalon.java.dev.j10.labs;
 
 import ru.avalon.java.dev.j10.labs.commons.Address;
+import ru.avalon.java.dev.j10.labs.models.Passport;
 import ru.avalon.java.dev.j10.labs.models.Person;
 
 public class Main {
@@ -25,8 +26,19 @@ public class Main {
          *    чтобы она адресовала объект типа 'Person'
          *    описывающий человека по имени 'John Edvard Smith'.
          */
-        ivanov = new Person("Иванов", "Иван", "Иванович");
-        smith = new Person("John", "Edvard", "Smith", "");
+
+        ivanov = new Person("Иван");
+        smith = new Person("John");
+
+        Passport passportForIvanov = new Passport("Иванов", ivanov.getFirstName(), "Иванович");
+        ivanov.setPassport(passportForIvanov);
+
+        System.out.println("\n" + passportForIvanov + "\n");
+
+        Passport passportForSmith = new Passport(smith.getFirstName(), "Edvard", "Smith", "");
+        smith.setPassport(passportForSmith);
+
+        System.out.println("\n" + passportForSmith + "\n");
 
         /*
          * TODO(Студент): Создайте несколько строковых переменных:
@@ -64,5 +76,6 @@ public class Main {
          * отдельной строке.
          */
         System.out.println(ivanovFullName + "\n" + smithFullName + "\n" + ivanovAddress + "\n" + smithAddress);
+
     }
 }

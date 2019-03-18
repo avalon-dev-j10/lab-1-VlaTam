@@ -49,30 +49,43 @@ public class Passport {
     private String dateOfIssue = "not defined";
     private String organization = "not defined";
 
-    public Passport(Person person){
-        firstName = person.getFirstName();
-        secondName = person.getSecondName();
-        middleName = person.getMiddleName();
-        lastName = person.getLastName();
-        serialAndNumber = counterOfPassports++;
-    }
-
-    public Passport (String lastName, String firstName){
-        this.lastName = lastName;
+    public Passport(String firstName){
         this.firstName = firstName;
+    }
+
+    public Passport(String lastName, String firstName){
+        this(firstName);
+        this.lastName = lastName;
         serialAndNumber = counterOfPassports++;
     }
 
-    public Passport (String lastName, String firstName, String middleName){
+    public Passport(String lastName, String firstName, String middleName){
         this(lastName, firstName);
         this.middleName = middleName;
     }
 
-    public Passport (String firstName, String secondName, String lastName, String middleName){
+    public Passport(String firstName, String secondName, String lastName, String middleName){
         this(lastName, firstName);
         this.secondName = secondName;
     }
 
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+
+    public void setSecondName(String secondName) {
+        this.secondName = secondName;
+    }
+
+    public void setMiddleName(String middleName) {
+        this.middleName = middleName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
 
     public void setBirthday(String birthday) {
         this.birthday = birthday;
@@ -85,6 +98,11 @@ public class Passport {
     public void setOrganization(String organization) {
         this.organization = organization;
     }
+
+    public void setSerialAndNumber(int serialAndNumber) {
+        this.serialAndNumber = serialAndNumber;
+    }
+
 
 
     public int getSerialAndNumber() {
@@ -121,19 +139,24 @@ public class Passport {
 
     @Override
     public String toString() {
-        if (secondName == null)
-            secondName = "not defined";
-        if (middleName == null)
-            middleName = "not defined";
+        String passportInfo = "firstName: " + firstName + "\n";
 
-        String passportInfo = "firstName: " + firstName + "\n" +
-                "secondName: " + secondName + "\n" +
-                "middleName: " + middleName + "\n" +
-                "lastName: " + lastName + "\n" +
-                "serialAndNumber: " + serialAndNumber + "\n" +
-                "birthday: " + birthday + "\n" +
-                "dateOfIssue: " + dateOfIssue + "\n" +
-                "organization: " + organization;
+        if (secondName != null)
+            passportInfo += "secondName: " + secondName + "\n";
+        else
+            passportInfo += "secondName: not defined" + "\n";
+
+        if (middleName != null)
+            passportInfo += "middleName: " + middleName + "\n";
+        else
+            passportInfo += "middleName: not defined" + "\n";
+
+        passportInfo += "lastName: " + lastName + "\n" +
+                    "serialAndNumber: " + serialAndNumber + "\n" +
+                    "birthday: " + birthday + "\n" +
+                    "dateOfIssue: " + dateOfIssue + "\n" +
+                    "organization: " + organization;
+
         return passportInfo;
     }
 }
